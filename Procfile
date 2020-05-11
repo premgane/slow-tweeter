@@ -1,1 +1,1 @@
-flask translate compile; gunicorn tweeter:app
+web: gunicorn tweeter:app
