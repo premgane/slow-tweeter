@@ -13,7 +13,7 @@
         var count = document.getElementById("count");
         var field = document.getElementById("tweet");
         field.addEventListener("keydown", function(event) {
-            count.value = 160 - document.getElementById("tweet").value;
+            count.textContent = String(160 - document.getElementById("tweet").value.length);
         });
     </script>
 {% endblock %}
