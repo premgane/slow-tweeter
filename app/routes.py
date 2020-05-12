@@ -1,7 +1,6 @@
-from app import app, db
+from app import app, db, models
 from flask import render_template, flash, redirect, url_for
 from app.forms import PostingForm
-from models import Post
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -10,7 +9,7 @@ def index():
     if form.validate_on_submit():
         flash('Tweeting this out: {}'.format(
             form.tweet.data))
-        tweet = Post(tweet=form.tweet.data)
+        tweet = models.Post(tweet=form.tweet.data)
         db.session.add(tweet)
         db.session.commit()
 
