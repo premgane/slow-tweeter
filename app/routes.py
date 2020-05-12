@@ -2,7 +2,6 @@ from app import app, db
 from flask import render_template, flash, redirect, url_for
 from app.forms import PostingForm
 from models import Post
-from config import TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -15,8 +14,8 @@ def index():
         db.session.add(tweet)
         db.session.commit()
 
-        auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
-		auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET)
+        auth = tweepy.OAuthHandler(app.config.TWITTER_CONSUMER_KEY, app.config.TWITTER_CONSUMER_SECRET)
+		auth.set_access_token(app.config.TWITTER_ACCESS_TOKEN, app.config.TWITTER_ACCESS_SECRET)
 
 		api = tweepy.API(auth)
 
