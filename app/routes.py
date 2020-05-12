@@ -15,11 +15,11 @@ def index():
         db.session.commit()
 
         auth = tweepy.OAuthHandler(app.config.TWITTER_CONSUMER_KEY, app.config.TWITTER_CONSUMER_SECRET)
-		auth.set_access_token(app.config.TWITTER_ACCESS_TOKEN, app.config.TWITTER_ACCESS_SECRET)
+        auth.set_access_token(app.config.TWITTER_ACCESS_TOKEN, app.config.TWITTER_ACCESS_SECRET)
 
-		api = tweepy.API(auth)
+        api = tweepy.API(auth)
 
-		api.update_status(form.tweet.data)
+        api.update_status(form.tweet.data)
 
         return redirect(url_for('index'))
     return render_template('posting.html', title='Make a post', form=form)
