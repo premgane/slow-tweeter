@@ -9,7 +9,7 @@ def index():
     if form.validate_on_submit():
         flash('Tweeting this out: {}'.format(
             form.tweet.data))
-        tweet = models.Post(tweet=form.tweet.data)
+        tweet = models.Tweets(tweet=form.tweet.data)
         db.session.add(tweet)
         db.session.commit()
 

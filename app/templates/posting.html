@@ -8,4 +8,12 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+    <p id="#count">160</p>
+    <script>
+        var count = document.getElementById("count");
+        var field = document.getElementById("tweet");
+        field.addEventListener("keydown", function(event) {
+            count.value = 160 - document.getElementById("tweet").value;
+        });
+    </script>
 {% endblock %}
