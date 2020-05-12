@@ -1,6 +1,7 @@
 from app import app, db, models
 from flask import render_template, flash, redirect, url_for
 from app.forms import PostingForm
+import time
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -9,7 +10,8 @@ def index():
     if form.validate_on_submit():
         flash('Tweeting this out: {}'.format(
             form.tweet.data))
-        tweet = models.Tweets(tweet=form.tweet.data)
+        # In the year 2038, we will need to make sure not to use 32-bit ints
+        tweet = models.Tweets(id=time.time(), tweet=form.tweet.data)
         db.session.add(tweet)
         db.session.commit()
 
